@@ -11,7 +11,6 @@
   color: white !important;
 }
 
-/*--------------------------------------------------------------------------*/
 /* Code for userContent.css FILE - */
 @-moz-document url(about:home), url(about:newtab), url(about:privatebrowsing){
 
@@ -43,4 +42,3 @@ body::before {
   height: 100vh;
 }
 }
-

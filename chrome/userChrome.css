@@ -1,5 +1,6 @@
 /* Firefox Alpha v 1.1.0 */
 /* Source: https://github.com/Tagggar/Firefox-Alpha/ */
+
 :root {
   --6: 6px;
   --8: 8px;
@@ -7,10 +8,17 @@
   --tab-min-width: 24px !important;
   --toolbarbutton-border-radius: var(--6) !important;
   --tab-border-radius: var(--6) !important;
-  --main: #77777770;
-  --item: #77777730;
-  --grey: #b8b8b8;
+
+  /* --main: #77777770; */
+  /* --item: #77777730; */
+  /* --grey: #b8b8b8; */
+  --main: #1e1e2e;
+  --item: #181825;
+  --grey: #1e1e2e;
+
+
   --red: #ff000070;
+  --fg: #b4befe;
 
   --toolbarbutton-hover-background: transparent !important;
   --toolbarbutton-active-background: transparent !important;
@@ -49,8 +57,21 @@ spacer,.titlebar-spacer,
 /* ❌ Tab List */
 #alltabs-button,
 
+#urlbar-go-butto,
+
 /* ❌ Extensions Menu */
 #unified-extensions-button,
+/* #urlbar-container, */
+
+/* ❌ Add to Bookmark Button */
+/* #star-button-box, */
+
+/* ❌ Reader Button */
+#reader-mode-button,
+
+/* ❌ Tab Left & Right Scrollbutton Arrows*/
+/* #scrollbutton-down, */
+/* #scrollbutton-up, */
 
 /* ❌ #PanelUI-button */
 #PanelUI-menu-button,
@@ -118,18 +139,9 @@ menuitem[disabled], menu[disabled],
   -moz-user-focus: none;
 }
 
-/* ❌ Reader Button */
-#reader-mode-button,
-
-
 /* 🔗 Status Panel [Url Popup] */
 #statuspanel #statuspanel-label {
-  /* font-weight: 600 !important; */
-  /* padding-inline: var(--6) !important; */
-  /* border-radius: var(--6) !important; */
-  /* margin: var(--8) !important; */
-  /* background-color: blue !important; */
-    display: none !important;
+  display: none !important;
 }
 
 /* ℹ️ Findbar Ctrl+F */
@@ -192,12 +204,11 @@ menucaption[_moz-menuactive="true"]:not([disabled="true"]) {
   height: 16px !important;
 }
 
-/* *️⃣ Menu Popup Box */
 .menupopup-arrowscrollbox {
   border-radius: var(--8) !important;
   padding: var(--6) !important;
   background-color: var(--grey) !important;
-  color: black !important;
+  color: var(--fg) !important;
 }
 
 /* Menu Position */
@@ -217,9 +228,6 @@ menupopup > menu {
   border-radius: var(--6) !important;
   padding-inline: var(--6) !important;
   margin: 0 !important;
-
-
-
 }
 .menu-accel {
   margin-inline: var(--6) 0 !important;
@@ -230,7 +238,8 @@ menuitem[_moz-menuactive="true"]:not([disabled]),
 menupopup > menuitem[_moz-menuactive],
 menupopup > menu[_moz-menuactive] {
   background-color: var(--main) !important;
-  color: black !important;
+  /* color: black !important; */
+  color: #f9e2af !important;
 }
 #context-navigation {
   flex-direction: column !important;
@@ -345,8 +354,6 @@ tab:not([pinned]):hover .tab-close-button {
   height: var(--tab-min-height);
 }
 
-
-
 /* 🔗 URLBAR Inbut https: */
 #urlbar-input {
   transition: transform 0.1s linear;
@@ -357,18 +364,23 @@ tab:not([pinned]):hover .tab-close-button {
 }
 
 /* 📐 URLBAR in Tab */
-/* Source: https://github.com/MrOtherGuy/firefox-csshacks/.../selected_tab_as_urlbar.css */
+/* Source: https://github.com/MrOtherGuy/firefox-csshacks/selected_tab_as_urlbar.css */
 
 #main-window > body > box {
   position: relative;
   z-index: 1;
 }
+.urlbar-searchmode-and-input-box-container,
 .urlbar-input-box {
   z-index: -1 !important;
 }
 #alltabs-button,
 #unified-extensions-button,
 #PanelUI-button,
+/* #star-button-box, */
+/* #scrollbutton-down, */
+/* #scrollbutton-up, */
+/* #urlbar-container, */
 #reader-mode-button,
 #nav-bar-overflow-button {
   z-index: 2;
@@ -398,7 +410,7 @@ tab:not([pinned]):hover .tab-close-button {
 }
 
 /* 📐 Click Tab to Focus Urlbar */
-/* Source: https://github.com/MrOtherGuy/firefox-csshacks/.../click_selected_tab_to_focus_urlbar.css*/
+/* Source: https://github.com/MrOtherGuy/firefox-csshacks/click_selected_tab_to_focus_urlbar.css*/
 
 /* Make selected tab unclickable => click > capture box */
 .tabbrowser-tab:not([pinned])[selected] {
@@ -501,7 +513,7 @@ tab:not([pinned]):hover .tab-close-button {
 }
 #downloadsPanel-mainView {
   background-color: var(--grey) !important;
-  color: black;
+  color: var(--fg);
   padding: var(--6) !important;
 }
 #downloadsFooterButtons > button,
@@ -553,4 +565,3 @@ tab:not([pinned]):hover .tab-close-button {
     overflow-x: hidden;
   }
 }
-
