@@ -11,7 +11,7 @@
   --item: #77777730;
   --grey: #b8b8b8;
   --red: #ff000070;
-  
+
   --toolbarbutton-hover-background: transparent !important;
   --toolbarbutton-active-background: transparent !important;
 }
@@ -110,7 +110,7 @@ menuitem[disabled], menu[disabled],
 #downloads-button > .toolbarbutton-badge-stack > .toolbarbutton-badge,
 :root:not([customizing]) #downloads-indicator-icon,
 #downloads-indicator-start-box, #downloads-indicator-start-image > *,
-#downloads-indicator-finish-box, #downloads-indicator-finish-image > *, 
+#downloads-indicator-finish-box, #downloads-indicator-finish-image > *,
 
 /* ❌ Private Indicator */
 .private-browsing-indicator {
@@ -118,13 +118,18 @@ menuitem[disabled], menu[disabled],
   -moz-user-focus: none;
 }
 
+/* ❌ Reader Button */
+#reader-mode-button,
+
+
 /* 🔗 Status Panel [Url Popup] */
 #statuspanel #statuspanel-label {
-  font-weight: 600 !important;
-  padding-inline: var(--6) !important;
-  border-radius: var(--6) !important;
-  margin: var(--8) !important;
-  background-color: blue !important;
+  /* font-weight: 600 !important; */
+  /* padding-inline: var(--6) !important; */
+  /* border-radius: var(--6) !important; */
+  /* margin: var(--8) !important; */
+  /* background-color: blue !important; */
+    display: none !important;
 }
 
 /* ℹ️ Findbar Ctrl+F */
@@ -225,7 +230,7 @@ menuitem[_moz-menuactive="true"]:not([disabled]),
 menupopup > menuitem[_moz-menuactive],
 menupopup > menu[_moz-menuactive] {
   background-color: var(--main) !important;
-  color: black !important;  
+  color: black !important;
 }
 #context-navigation {
   flex-direction: column !important;
@@ -364,6 +369,7 @@ tab:not([pinned]):hover .tab-close-button {
 #alltabs-button,
 #unified-extensions-button,
 #PanelUI-button,
+#reader-mode-button,
 #nav-bar-overflow-button {
   z-index: 2;
   position: relative;
@@ -513,5 +519,38 @@ tab:not([pinned]):hover .tab-close-button {
 }
 #downloadsListBox > richlistitem > .downloadMainArea {
   margin-inline-end: var(--8) !important;
+}
+
+/* Search Suggestions Fix*/
+#urlbar-container,
+#urlbar-input-container {
+  opacity: 0;
+}
+.urlbarView {
+  background-color: var(--lwt-accent-color); /* Pop-up background color (adaptive) */
+  color: var(--grey);                               /* Pop-up text color */
+}
+
+/* Fix multi-tab issue after firefox 131.0 update */
+/* From https://github.com/MrOtherGuy/firefox-csshacks/blob/master/chrome/multi-row_tabs.css */
+@-moz-document url(chrome://browser/content/browser.xhtml){
+  #scrollbutton-up~spacer,
+  #scrollbutton-up,
+  #scrollbutton-down{ display: var(--scrollbutton-display-model,initial) }
+
+  scrollbox[part][orient="horizontal"] > slot,
+  scrollbox[part][orient="horizontal"]{
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    max-height: calc((var(--tab-min-height) + 2 * var(--tab-block-margin,0px)) * var(--multirow-n-rows));
+    scrollbar-color: currentColor transparent;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    scroll-snap-type: y mandatory;
+  }
+  scrollbox[part][orient="horizontal"] > slot{
+    overflow-x: hidden;
+  }
 }
 
